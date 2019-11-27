@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".GrilleDeJeu">
 
     <TableLayout
         android:layout_width="match_parent"
@@ -41,17 +41,18 @@
             android:layout_height="match_parent" >
 
             <Button
-                android:id="@+id/m11"
+                android:id="@+id/b0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="clicChiffre" />
+
+            <Button
+                android:id="@+id/b1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/m12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/m13"
+                android:id="@+id/b2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </TableRow>
@@ -61,17 +62,17 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/m21"
+                android:id="@+id/b3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/m22"
+                android:id="@+id/b4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/m23"
+                android:id="@+id/b5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </TableRow>
@@ -81,17 +82,17 @@
             android:layout_height="match_parent" >
 
             <Button
-                android:id="@+id/m31"
+                android:id="@+id/b6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/m32"
+                android:id="@+id/b7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/m33"
+                android:id="@+id/b8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </TableRow>
