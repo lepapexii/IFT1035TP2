@@ -49,6 +49,7 @@ public class GrilleDeJeu extends AppCompatActivity {
         newGame = findViewById(R.id.newGame);
         result = findViewById(R.id.result);
         titre = findViewById(R.id.titre);
+        jeu.initialise();
     }
 
     public GrilleDeJeu(){
@@ -73,10 +74,42 @@ public class GrilleDeJeu extends AppCompatActivity {
 
         Button b = (Button)v;
 
-        int aff = b.getId();
-        if(b1.getId() == aff){
-            affiche(aff);
+        int aff = v.getId();
+        if(b0.getId() == aff && b0.getText() == ""){
+            b0.setText("x");
+
+
         }
+        if(b1.getId() == aff && b1.getText() == ""){
+            b1.setText("x");
+
+        }
+        if(b2.getId() == aff && b2.getText() == ""){
+            b2.setText("x");
+
+        }
+        if(b3.getId() == aff && b3.getText() == ""){
+            b3.setText("x");
+
+        }
+        if(b4.getId() == aff && b4.getText() == ""){
+            b4.setText("x");
+
+        }
+        if(b5.getId() == aff && b5.getText() == ""){
+            b5.setText("x");
+        }
+        if(b6.getId() == aff && b6.getText() == ""){
+            String txt = b6.getText().toString();
+            b6.setText("x");
+        }
+        if(b7.getId() == aff && b7.getText() == ""){
+            b7.setText("x");
+        }
+        if(b8.getId() == aff && b8.getText() == ""){
+            b8.setText("x");
+        }
+
 
 
     }
