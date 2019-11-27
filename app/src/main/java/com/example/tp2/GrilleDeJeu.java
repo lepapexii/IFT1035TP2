@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -77,7 +78,6 @@ public class GrilleDeJeu extends AppCompatActivity {
     }
 
     public void actionPerformed(View v){
-
         Button b = (Button)v;
 
         int aff = v.getId();
