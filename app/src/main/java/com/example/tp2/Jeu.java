@@ -2,6 +2,7 @@ package com.example.tp2;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class Jeu{
@@ -15,14 +16,12 @@ public class Jeu{
 
     public int nbreDeCoups;
     public Jeu(){
-
     }
 
-
     public void initialise() {
-        listeCoupsX = new ArrayList<Integer>();
-        listeCoupsY = new ArrayList<Integer>();
-        listeCoups = new ArrayList<Integer>();
+        listeCoupsX = new ArrayList<Integer>();if (listeCoupsX!=null){listeCoupsX.clear();}
+        listeCoupsY = new ArrayList<Integer>();if (listeCoupsX!=null){listeCoupsY.clear();}
+        listeCoups = new ArrayList<Integer>();if (listeCoupsX!=null){listeCoups.clear();}
         nbreDeCoups = 0;
 
         ArrayList<Integer> comb1 = new ArrayList<Integer>(Arrays.asList(0,1,2));
@@ -51,10 +50,7 @@ public class Jeu{
         listeCoups.add(cellule);
         listeCoupsX.add(cellule);
         nbreDeCoups++;
-
     }
-
-
     public int getO() {
         System.out.println("nbre de coup" + nbreDeCoups);
 
@@ -269,6 +265,14 @@ public class Jeu{
                         listeCoupsY.add(7);
                         return 7;
                     }
+                    if (listeCoups.get(0) == 2 || listeCoups.get(2) == 2 && !listeCoups.contains(1)|| !listeCoups.contains(3)||!listeCoups.contains(5)|| !listeCoups.contains(7) ) {
+                        n = new int[]{1, 3, 5, 7};
+                        m = (n[random.nextInt(n.length)]);
+                        listeCoups.add(m);
+                        System.out.println("X:0,8 \nO: 4,[1,3,5,7]");
+                        listeCoupsY.add(m);
+                        return m;
+                    }
                 }
                 if (listeCoups.get(0) == 8 || listeCoups.get(2) == 8) {
                     if (listeCoups.get(0) == 5 || listeCoups.get(2) == 5 && !listeCoups.contains(2)) {
@@ -298,6 +302,14 @@ public class Jeu{
                         System.out.println("X:6,8 \nO: 4");
                         listeCoupsY.add(7);
                         return 7;
+                    }
+                    if (listeCoups.get(0) == 0 || listeCoups.get(2) == 0 && !listeCoups.contains(1)|| !listeCoups.contains(3)||!listeCoups.contains(5)|| !listeCoups.contains(7) ) {
+                        n = new int[]{1, 3, 5, 7};
+                        m = (n[random.nextInt(n.length)]);
+                        listeCoups.add(m);
+                        System.out.println("X:0,8 \nO: 4,[1,3,5,7]");
+                        listeCoupsY.add(m);
+                        return m;
                     }
                 }
                 //Cas ou on a 2 cas adjacentes a un coin
@@ -464,12 +476,38 @@ public class Jeu{
         return win;
     }
 
-    public boolean gagnant(String joueur, int[] pos) {
+    public int[] gagnant(String joueur) {
+        ArrayList <Integer> listeCoupsXCopie;
+        ArrayList <Integer> listeCoupsYCopie;
+        ArrayList<Integer> tabCombinaisonsCopie;
+        int[] pos={0,0,0};
+        for (int i=0;i<tabCombinaisons.size();i++){
+            listeCoupsXCopie=(ArrayList<Integer>) listeCoupsX.clone();
+            listeCoupsYCopie=(ArrayList<Integer>) listeCoupsY.clone();
 
+            tabCombinaisonsCopie=(ArrayList<Integer>) tabCombinaisons.get(i).clone();//Cas ou on check si X gagne
+            tabCombinaisonsCopie.retainAll(listeCoupsXCopie);
+            if (tabCombinaisonsCopie.size()==3 && joueur=="X") {
+                for (int j=0;j<tabCombinaisonsCopie.size();j++){
+                    pos[j]=tabCombinaisonsCopie.get(j);
+                }
+                return pos;
+            }
 
-        return false;
+            tabCombinaisonsCopie=(ArrayList<Integer>) tabCombinaisons.get(i).clone();//Cas ou on check si O gagne
+            tabCombinaisonsCopie.retainAll(listeCoupsYCopie);
+            if (tabCombinaisonsCopie.size()==3 && joueur=="O"){
+                for (int j=0;j<tabCombinaisonsCopie.size();j++){
+                    pos[j]=tabCombinaisonsCopie.get(j);
+                    System.out.println("pos Input ->"+pos[j]);
+                }
+                System.out.println("Valeur de la combi gagnate:"+pos);
+                return pos;
+            }
+        }
+        pos[0]=-1;
+        return pos;
     }
-
     public boolean isPartieNulle() {
         ArrayList <Integer> caselibre;
         caselibre = new ArrayList<Integer>();
